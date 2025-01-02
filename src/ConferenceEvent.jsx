@@ -9,6 +9,7 @@ const ConferenceEvent = () => {
     const [numberOfPeople, setNumberOfPeople] = useState(1);
     const avItems = useSelector((state) => state.av);
     const venueItems = useSelector((state) => state.venue);
+    const mealsItems = useSelector((state) => state.meals);
     const dispatch = useDispatch();
     const remainingAuditoriumQuantity = 3 - venueItems.find(item => item.name === "Auditorium Hall (Capacity:200)").quantity;
 
@@ -195,7 +196,11 @@ const ConferenceEvent = () => {
                                 </div>
 
                                 <div className="input-container venue_selection">
-
+                                    <label htmlFor="numberOfPeople"><h3>Number of People:</h3></label>
+                                    <input type="number" className="input_box5" id="numberOfPeople" value={numberOfPeople}
+                                        onChange={(e) => setNumberOfPeople(parseInt(e.target.value))}
+                                        min="1"
+                                    />
                                 </div>
                                 <div className="meal_selection">
 
